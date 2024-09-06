@@ -15,7 +15,6 @@ export function App() {
   const { data: transactionsByEmployee, ...transactionsByEmployeeUtils } =
     useTransactionsByEmployee();
   const [isLoading, setIsLoading] = useState(false);
-  const [noTransactions, setNoTransactions] = useState(false);
 
   const transactions = useMemo(
     () => paginatedTransactions?.data ?? transactionsByEmployee ?? null,
@@ -42,7 +41,6 @@ export function App() {
     },
     [paginatedTransactionsUtils, transactionsByEmployeeUtils]
   );
-
   useEffect(() => {
     if (employees === null && !employeeUtils.loading) {
       loadAllTransactions();
